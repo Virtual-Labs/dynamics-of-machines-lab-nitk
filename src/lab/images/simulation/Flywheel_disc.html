@@ -1,0 +1,397 @@
+
+<html lang="en-US">
+
+<head>
+<meta charset="UTF-8">
+
+<title>SOLVE - Mechanics of Machines Lab - Disc Type Flywheel</title>
+<link rel="stylesheet" href="sins/MOMstyle.css" />
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js'></script>
+<script type="text/javascript" src= "sins/MOMscript.js"></script>
+
+<script type="text/javascript">
+
+var simstatus=1; 
+var rotstatus=1;
+
+var commenttext="Some Text";
+var commentloc=0;
+
+var trans= new point(200,250);
+var trans1= new point(350,300);
+
+var o= new point(0,0,"o");
+var a= new point(0,0,"a");
+var b= new point(0,0,"b");
+var c= new point(0,0,"c");
+var d= new point(0,0,"d");
+var e= new point(0,0,"e");
+var f= new point(0,0,"f");
+var g= new point(0,0,"g");
+var h= new point(0,0,"h");
+var i= new point(0,0," ");
+var o1= new point(0,0," ");
+var o2=new point(0,0," ");
+var a1= new point(0,0," ");
+var a2= new point(0,0," ");
+
+var n=0;
+var theta = 0,theta1=0;
+var timef=0;
+var omega=1;
+var r=0,aa=0;
+var ra=0;
+var j=0;
+var acc=0;
+var m;
+var gr=9.81;
+var r_axle=5;
+var I=15;
+
+var flaggrashof=true;
+
+var canvas;
+var ctx;
+//timing section
+var simTimeId = setInterval("",'1000');
+var pauseTime = setInterval("",'1000');
+var time=0;
+//point tracing section
+var ptx = [];
+var pty = [];
+ptxdot=[];
+ptxddot=[];
+ptxdddot=[];
+//click status of legend and quick reference
+var legendCS = false;
+var quickrefCS = false;
+var temp=0;
+var offset=0;
+
+var acc,vel,jerk;
+var j=20;
+var tempPt=new point(0,0,"");
+var truncate=290;
+var forvar=0;
+
+function editcss()
+{
+$('.variable').css('padding-top','30px');
+}
+
+function startsim()
+{
+simTimeId=setInterval("time=time+0.1; varupdate(); ",'100');
+}
+
+function simstate()
+{
+  var imgfilename=document.getElementById('playpausebutton').src;
+  imgfilename = imgfilename.substring(imgfilename.lastIndexOf('/') + 1, imgfilename.lastIndexOf('.'));
+  if (imgfilename=="bluepausedull")
+  {
+    document.getElementById('playpausebutton').src="sins/blueplaydull.png";
+	 clearInterval(simTimeId);
+    simstatus=1;
+    $('#thetaspinner').spinner("value",theta);			//to set simulation parameters on pause
+    pauseTime=setInterval("varupdate();",'100');
+  }
+    if (imgfilename=="blueplaydull")
+  {
+  	 time=0;			
+  	 clearInterval(pauseTime);
+    document.getElementById('playpausebutton').src="sins/bluepausedull.png";
+    simTimeId=setInterval("time=time+0.1; varupdate(); ",'100');    
+    simstatus=0;
+  } 
+}
+
+function rotstate()
+{
+  var imgfilename=document.getElementById('rotationbutton').src;
+  imgfilename = imgfilename.substring(imgfilename.lastIndexOf('/') + 1, imgfilename.lastIndexOf('.'));
+  if (imgfilename=="bluecwdull")
+  {
+    document.getElementById('rotationbutton').src="sins/blueccwdull.png";
+    rotstatus=-1;
+  }
+    if (imgfilename=="blueccwdull")
+  {
+    document.getElementById('rotationbutton').src="sins/bluecwdull.png";
+    rotstatus=1;
+  } 
+}
+
+
+function varinit()
+{
+varchange();		
+//Variable r slider and number input types
+$('#rslider').slider("value", 50);	
+$('#rspinner').spinner("value", 50);
+//Variable m slider and number input types
+$('#mslider').slider("value", 10);	
+$('#mspinner').spinner("value", 10);
+
+}
+
+function varchange()
+{
+//Variable r slider and number input types
+$('#rslider').slider({ max : 90, min : 10, step : 1 });		// slider initialisation : jQuery widget
+$('#rspinner').spinner({ max : 90, min : 10, step : 1 });		// number initialisation : jQuery widget			
+// monitoring change in value and connecting slider and number
+// setting trace point coordinate arrays to empty on change of link length
+$( "#rslider" ).on( "slide", function( e, ui ) { $('#rspinner').spinner("value",ui.value); ptx=[]; pty=[]; ptxdot=[]; ptxddot=[]; ptxdddot=[]; j=20;	ptx.push(b.ycoord-50); pty.push(o.xcoord+j);});
+$( "#rspinner" ).on( "spin", function( e, ui ) { $('#rslider').slider("value",ui.value); ptx=[]; pty=[]; ptxdot=[]; ptxddot=[]; ptxdddot=[]; j=20;	ptx.push(b.ycoord-50); pty.push(o.xcoord+j);} );
+$( "#rspinner" ).on( "change", function() {  varchange() } );
+
+//Variable m slider and number input types
+$('#mslider').slider({ max : 15, min : 5, step : 1 });		// slider initialisation : jQuery widget
+$('#mspinner').spinner({ max : 15, min : 5, step : 1 });		// number initialisation : jQuery widget			
+// monitoring change in value and connecting slider and number
+// setting trace point coordinate arrays to empty on change of link length
+$( "#mslider" ).on( "slide", function( e, ui ) { $('#mspinner').spinner("value",ui.value); ptx=[]; pty=[]; ptxdot=[]; ptxddot=[]; ptxdddot=[]; j=20;	ptx.push(b.ycoord-50); pty.push(o.xcoord+j);} );
+$( "#mspinner" ).on( "spin", function( e, ui ) { $('#mslider').slider("value",ui.value); ptx=[]; pty=[]; ptxdot=[]; ptxddot=[]; ptxdddot=[]; j=20;	ptx.push(b.ycoord-50); pty.push(o.xcoord+j);} );
+$( "#mspinner" ).on( "change", function() {  varchange() } );
+
+varupdate();
+}
+
+function varupdate()
+{
+
+$('#rslider').slider("value", $('#rspinner').spinner('value'));  //updating slider location with change in spinner(debug)
+$('#mslider').slider("value", $('#mspinner').spinner('value'));
+
+r=$('#rspinner').spinner("value");
+m=$('#mspinner').spinner("value");
+$('#mslider').slider({max: 15});
+$('#mslider').slider({min: 5});
+$('#mspinner').spinner({max: 15});
+$('#mspinner').spinner({min:5});
+
+if(!simstatus)
+{
+$('#omegaslider').slider("enable"); 
+$('#omegaspinner').spinner("enable");
+$('#thetaslider').slider("disable"); 
+$('#thetaspinner').spinner("disable"); 
+omega=$('#omegaspinner').spinner("value");
+theta=theta+(rotstatus*0.1*deg(omega));
+theta=theta%360;
+if(theta<0)theta+=360;
+}
+
+if(simstatus)
+{
+$('#thetaslider').slider("enable"); 
+$('#thetaspinner').spinner("enable");
+$('#omegaslider').slider("disable"); 
+$('#omegaspinner').spinner("disable"); 
+theta=$('#thetaspinner').spinner("value");
+}
+acc=m*gr*r_axle/I;
+omega=acc*time;
+theta=omega*time;
+phi=deg(Math.asin((aa*Math.cos(rad(theta)))/r));
+o2.ycoord=255+r_axle*rad(theta);
+theta1=theta;
+timef=time;
+if(o2.ycoord<375)
+{
+o.xcoord=0;
+o.ycoord=0;
+a.xcoord=r*Math.cos(rad(theta));
+a.ycoord=r*Math.sin(rad(theta));
+c.xcoord=180;
+c.ycoord=r;
+d.xcoord=180;
+d.ycoord=-r;
+e.xcoord=200;
+e.ycoord=r;
+f.xcoord=200;
+f.ycoord=-r;
+g.xcoord=180;
+g.ycoord=r*Math.sin(rad(theta));
+h.xcoord=200;
+h.ycoord=r*Math.sin(rad(theta));
+i.xcoord=50;
+i.ycoord=50;
+o1.ycoord=245;
+o1.xcoord=430;
+o2.xcoord=430;
+a1.ycoord=375;
+a1.xcoord=10;
+a2.xcoord=530;
+a2.ycoord=375;
+printcomment("",1);
+draw();
+}
+else if(o2.ycoord>=375)
+{
+time=time-0.1;
+printcomment("Radius of axle: "+r_axle+"<br>Height of weight: 120" +"<br>Time taken to reach ground: "+roundd(time,2),1);
+}
+
+}
+
+function perror()
+{
+var moi = document.getElementById('moment of inertia').value;
+var error=0;
+error=(moi-I)*100/I;
+var err = error.toFixed(2);
+printcomment("Percentage Error: "+err+"%"+"<br>Actual Moment of Inertia: "+I,2);
+}
+
+
+function draw()
+{
+
+
+  canvas = document.getElementById("simscreen");
+  ctx = canvas.getContext("2d");
+  ctx.clearRect(0,0,550,400);  //clears the complete canvas#simscreen everytime
+  
+  pointtrans(o,trans);
+  pointtrans(a,trans);
+  pointtrans(b,trans);
+  pointtrans(c,trans);
+  pointtrans(d,trans);
+  pointtrans(e,trans);
+  pointtrans(f,trans);
+  pointtrans(g,trans);
+  pointtrans(h,trans);
+  pointtrans(i,trans1);
+  
+  ctx.beginPath();
+  ctx.strokeStyle="#000";
+  ctx.arc(o.xcoord,o.ycoord,r,0,2*Math.PI,false);
+  ctx.stroke();
+  ctx.fillStyle="#CC7777";//sea pink//circle//left and right
+  ctx.fill();
+  ctx.closePath();
+  
+  ctx.beginPath();
+  ctx.strokeStyle="#000";
+  ctx.fillRect(c.xcoord,c.ycoord,20,2*r);
+  ctx.stroke();
+  ctx.fillStyle="#CC7777";//sea pink
+  ctx.fill();
+  ctx.closePath();
+  
+  var k=document.getElementById("simscreen");
+  var ctx=k.getContext("2d");
+  ctx.strokeStyle="#000";
+  ctx.rect(330,245,120,10);
+  ctx.stroke();
+  ctx.fillStyle="#CCCCCC";
+  ctx.fill();
+  ctx.closePath();
+   
+//Pivot and centre 
+  pointjoin(o,a,ctx,"#CCCC00",5);
+  
+  for(n=0;n<20;n++)
+  if(theta>(90+360*n)&&theta<(270+360*n)){
+  pointjoin(g,h,ctx,"#CCCC00",5);//yellow
+  }  
+  pointjoin(c,d,ctx,"#000",0.5);
+  pointjoin(e,f,ctx,"#000",0.5);
+  pointjoin(c,e,ctx,"#000",0.5);
+  pointjoin(d,f,ctx,"#000",0.5);
+  pointjoin(o1,o2,ctx,"#000",1);
+  pointdisp(o2,ctx,5,"#000000","#003366",'','','');//blue
+ 
+  pointjoin(a1,a2,ctx,"#000",1.5);
+  
+  pointdisp(o,ctx,5,"#000000","#003366",'','','');
+  
+}
+
+function printcomment(commenttext,commentloc)
+{
+  if(commentloc==0)
+  {
+  document.getElementById('commentboxright').style.visibility='hidden';
+  document.getElementById('commentboxleft').style.width='570px';
+  document.getElementById('commentboxleft').innerHTML = commenttext;
+  }
+  else if(commentloc==1)
+  {
+  document.getElementById('commentboxright').style.visibility='visible';
+  document.getElementById('commentboxleft').style.width='285px';
+  document.getElementById('commentboxleft').innerHTML = commenttext;
+  }
+  else if(commentloc==2)
+  {
+  document.getElementById('commentboxright').style.visibility='visible';
+  document.getElementById('commentboxleft').style.width='285px';
+  document.getElementById('commentboxright').innerHTML = commenttext;
+  }
+  else
+  {
+  document.getElementById('commentboxright').style.visibility='hidden';
+  document.getElementById('commentboxleft').style.width='570px';
+  document.getElementById('commentboxleft').innerHTML = "<center>please report this issue to adityaraman@gmail.com</center>"; 
+  // ignore use of deprecated tag <center> . Code is executed only if printcomment function receives inappropriate commentloc value
+  }
+}
+
+</script>
+</head>
+
+<body onload="editcss(); startsim(); varinit();">
+
+<noscript>
+The simulation requires JavaScript to be enabled.
+</noscript>
+
+<div id="container">
+<div id="simtitle">Disc Type Flywheel</div>
+
+<canvas id="simscreen" height="400px" width="550px"></canvas>
+
+<div id="titleincanvas"></div>
+<div id="datatable1" class="datatable"></div>
+<div id="datatable2" class="datatable"></div>
+
+<div style="font-family:verdana; font-size:15px;" id="commentboxleft"></div>
+<div style="font-family:verdana; font-size:14px;" id="commentboxright"></div>
+
+<div id="vartitle">VARIABLES</div>
+
+<div id="variables">
+<div class="variable">
+<div class="varname"><p title="Link Length">r (cm)</p>
+<input id="rspinner"></input></div>
+<div id="rslider"></div>
+</div>
+
+<div id = "mass" class="variable">
+<div class="varname"><p title='Suspended Mass'>m (kg) </p>
+<input id="mspinner"></input></div>
+<div id="mslider"></div>
+</div>
+
+<div class="variable">Moment of Inertia :</div>
+&nbsp;&nbsp;&nbsp;<input type="number" id="moment of inertia"></br></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" onclick="perror();">
+</div>
+
+<div id="ctrltitle">CONTROLS</div>
+
+<div id="controls">
+<img id="playpausebutton" onclick="simstate()" src="sins/bluepausedull.png" />
+<img id="rotationbutton" onclick="rotstate()" src="sins/bluecwdull.png" />
+
+</div>
+
+<div id="copyright" title="Developer : Avinash Viswambharan"> Copyright &copy; SOLVE The Virtual Lab @ NITK Surathkal </div>
+
+</div>
+
+</body>
+</html>

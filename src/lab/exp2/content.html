@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slider Crank Mechanism</title>
+
+	
+</head>
+
+<body>
+  <div id="experiment">
+        <!-- The Experiment Document Container-->
+        <!-- The lab Header contains the logo and the name of the lab,
+  usually displayed on the top of the page-->
+
+        <header class="default" id="experiment-header">
+            <div class="logo" id="experiment-header-logo">
+            <!-- Enclose the logo image of your lab or write it in 
+      text-->
+            <img src="../images/logo.jpg"></div>
+
+            <div class="heading" id="experiment-header-heading">
+                <!-- Write the name of your lab and link it to the home 
+      page of your lab (h1 tag is preferred while writing your 
+      lab name)-->
+                <a href="../index.html">Dynamics of Machines Lab</a>
+            </div><!-- Add any additional element you want to add to the lab 
+    header, For example : Help (Enclosing them with suitable 
+    div is recommended)-->
+        </header><!-- The lab article is the main content area where all the 
+  experiment content sits-->
+
+        <article id="experiment-article">
+            <!-- The lab article has an header, optional navigational 
+    menu, number of sections, an optional sidebar and a closing 
+    footer-->
+
+            <div class="breadcrumb" id="experiment-article-breadcrumb"></div>
+
+            <header class="heading" id="experiment-article-heading">
+               Slider Crank Mechanism
+            </header><!-- Navigation menu is useful to organize the view of 
+      multiple sections inside the article-->
+
+            <nav class="default" id="experiment-article-navigation">
+                <ul id="experiment-article-navigation-menu">
+                    <!-- The menu can be dynamically generated to contain 
+          the headings of your sections or instead write the 
+          menu items of your choice individually enclosedu in 
+          &lt;li&gt; tag as shown below-->
+                </ul>
+            </nav><!-- All the sections of your lab or experiment can be 
+      enclosed together with a div element as shown below-->
+                <div id="experiment-article-sections">
+                <!-- First section of the article-->
+
+  <section id="experiment-article-section-1">
+                    <div class="icon" id="experiment-article-section-1-icon">
+                    <!-- Enclose the icon image of your lab. -->
+                     <img src="../images/theory.jpg"></div>
+
+                    <div class="heading" id=
+                    "experiment-article-section-1-heading">
+                        Theory
+                    </div>
+
+					
+					
+					
+                    <div class="content" id=
+                    "experiment-article-section-1-content">
+                        <div class="divContent" id="wrap">
+						<h3><b>Objective  </b></h3></br>
+					 <p style="text-indent: 50px;">After completing the experiments on Dynamic analysis of Slider Crank mechanisms</p>
+					<ul> 
+					<li style=" margin-left: 75px;">Students will be able to understand the concepts of dynamic analysis of slider crank mechanisms</li>
+					<li style=" margin-left: 75px;">Calculate the forces on each bar </li>
+					</ul></br>
+					 
+						<h3><b>Prerequisites  </b></h3></br>
+                        <p style="text-indent: 50px;">Please go through the theory of the kinematic analysis of the slider crank mechanism before attempting this experiment</p></br>
+						
+						<h3><b>Theory  </b></h3></br>
+                        
+					   <p style="text-indent: 50px;">The slider crank mechanism is one of the most basic forms of closed loop mechanisms. It has a single degree of freedom and is often used to convert rotary motion into linear motion by varying link lengths. From an application perspective it is very important to understand the dynamics of such a system. The kinematics of the system is largely governed by the link length and so is the dynamics of the system. Through the process of the simulation, one would understand how to calculate the forces on each link for a constant angular velocity as input.</p></br>
+					   
+					   <p style="text-indent: 50px;">The dynamic analysis of the slider crank mechanism is covered after understanding the kinematic analysis since the acceleration of the links are required to calculate the forces on the link.</p></br>
+					   
+                       <p style="text-indent: 50px;">Given the fact that the acceleration of the links is known the dynamic analysis is done.</p></br>
+ 
+					   <center><p style="text-indent: 0px;">Disassembled view of the slider crank mechanism (Reference: RL Norton – Mechanics of Machines)</img></center>
+					   
+					   	<center><img src="../images/exp2-1.png" style =" width:361px; height:271px;"></img></center></br></br>
+						
+					   	<center><img src="../images/exp2-2.png" style =" width:168px; height:128px;"></img></center></br></br>
+   
+					   <h3 ><b>Link 2 : </b></h3>
+					   
+					   <p style="text-indent: 50px;">F<sub>12x</sub>+F<sub>32x</sub>=m<sub>2</sub>a<sub>G2x</sub></p></br>
+					   
+					   <p style="text-indent: 50px;">F<sub>12y</sub>+F<sub>32y</sub>=m<sub>2</sub>a<sub>G2y</sub></p></br>
+					   
+					   <p style="text-indent: 50px;">T<sub>12</sub>+(R<sub>12x</sub>F<sub>12y</sub>+R<sub>12y</sub>F<sub>12x</sub>)+(R<sub>32x</sub>F<sub>32y</sub>-R<sub>32y</sub>F<sub>32x</sub>)=I<sub>g2</sub>&alpha;<sub>2</sub></p></br>
+					   
+					   	<center><img src="../images/exp2-3.png" style =" width:271px; height:159px;"></img></center></br>
+
+					   <h3 ><b>Link 3 : </b></h3>
+					   
+					   <p style="text-indent: 50px;">F<sub>43x</sub>-F<sub>32x</sub>=m<sub>3</sub>a<sub>G3x</sub></p></br>
+					   
+					   <p style="text-indent: 50px;">F<sub>43y</sub>-F<sub>32y</sub>=m<sub>3</sub>a<sub>G3y</sub></p></br>
+					   
+					   <p style="text-indent: 50px;">(R<sub>43x</sub>F<sub>43y</sub>-R<sub>43y</sub>F<sub>43x</sub>)-(R<sub>23x</sub>F<sub>32y</sub>-R<sub>23y</sub>F<sub>32x</sub>)=I<sub>g3</sub>&alpha;<sub>3</sub></p></br>
+					   
+					   <center><img src="../images/exp2-4.png" style =" width:281px; height:161px;"></img></center></br>
+
+					  	<h3 ><b>Link 4 : </b></h3>
+					   
+					   <p style="text-indent: 50px;">F<sub>14x</sub>-F<sub>43x</sub>+F<sub>px</sub>=m<sub>4</sub>a<sub>G4x</sub></p></br>
+					   
+					   <p style="text-indent: 50px;">F<sub>14y</sub>-F<sub>43y</sub>F<sub>py</sub>=m<sub>4</sub>a<sub>G4y</sub></p></br>
+					   
+					   <p style="text-indent: 50px;">(R<sub>14x</sub>F<sub>14y</sub>-R<sub>14y</sub>F<sub>14x</sub>)-(R<sub>34x</sub>F<sub>43y</sub>-R<sub>34y</sub>F<sub>43x</sub>)+(R<sub>px</sub>F<sub>py</sub>-R<sub>py</sub>F<sub>px</sub>)=I<sub>g4</sub>&alpha;<sub>4</sub></p></br>
+					   
+					   <p style="text-indent: 50px;">The above equations are used to calculate forces on each link.</p></br>
+						
+						
+						
+						</div>
+                    
+					</div>
+
+				</section>     
+   <section id="experiment-article-section-2">
+                    <div class="icon" id="experiment-article-section-2-icon">
+                    <!-- Enclose the icon image of your lab.-->
+                   <img src="../images/procedure.jpg" style="padding-left: 20px;"></div>
+
+                    <div class="heading" id=
+                    "experiment-article-section-2-heading">
+                        Procedure
+                    </div>
+
+                    <div class="content" style="font-family:verdana;" id=
+                    "experiment-article-section-2-content">
+                        <div class="divContent"  id="wrap">
+						
+
+		       <ol>
+			   <li>Based on the kinematic analysis of the four bar linkage, the accelerations of the bar is figured out</br></br>
+	
+			   <li>These accelerations are found out with two components</li>
+		             <ul>
+					 <li style="margin-left:25px;">Tangential Acceleration</li>
+					 <li style="margin-left:25px;">Centripetal Acceleration</li>
+					 </ul></br>
+					 
+		       <li>Both these components are used to calculate the accelerations at the CG of each link. In our case the CG is of each link is at the centre of each link</li></br>
+		
+		       <li>For each link three equations are written down respectively and forces on each link are represented as variables</li></br>
+			   
+		       <li>In total 9 equations are formed with 9 variables. Using the concepts of linear algebra the 9 equations are solved and forces on each link is calculated. The simulation uses Gauss Elimination Method (Reference for linear algebra-NPTEL - <a href=" https://www.youtube.com/watch?v=Spmar6neOOc " >https://www.youtube.com/watch?v=Spmar6neOOc</a>)</li></br>
+			   
+		       <li>Based on the forces calculated the free body diagram of each link can also be represented through a single force creating acceleration and moment because the point of action of force is shifted from point of CG.</li></br>
+			   
+		       <li>Another representation of the forces is by representing it through an equivalent force displaced by a certain distance from the CG. Hence the moment is represented by equivalent force acting at a distance from the CG.</li></br>
+			   
+     		</ol>
+			</br></br>
+			
+			<h3><b>Simulation</b></h3></br>
+			<ol>
+			<li><b>Kinematic analysis done on Slider Crank Mechanism</b></br></br>
+			<center><img src="../images/exp2-5.png" style =" width:364px; height:271px;"></img></center></br>
+			   <ul>
+			   <li style="margin-left:25px;">For this page the link lengths can be varied. The result of which can be seen on the position, velocity and acceleration diagram </li></br>
+			   <li style="margin-left:25px;">The numerical values of the position, velocity and acceleration of the linkage are shown in the data table located at the left-bottom corner</li></br>
+			   <li style="margin-left:25px;">The simulation has two modes</li></br>
+			        <ul>
+					    <li style="margin-left:50px; list-style-type:square;"><b>Pause Mode</b></li>
+						
+						<p style="text-indent:50px;">In this mode the simulation is made to behave in such a way that the user inputs the input angle. In the screenshot displayed above the simulation is paused and the user can vary theta 2 values accordingly as per his/her wish</p></br>
+				
+				        <li style="margin-left:50px; list-style-type:square;"><b>Run Mode</b></li>
+				
+						<p style="text-indent:50px;">In this mode the simulation is made to behave in such a way that the user inputs the angular velocity of the four bar linkage.</p></br>
+						
+					</ul>
+					<p style="text-indent:0px;">Overall this screen of the simulation is used figure out the position, velocity and acceleration of the links.</p></br>
+			   </ul>
+            </li>
+			<li><b>Acceleration of CGs</b></br></br>
+			
+			<center><img src="../images/exp2-6.png" style="width:354px; height:268px;"></img></center></br>
+			
+			<p style="text-indent:50px;">This page is navigated to using the arrows at the bottom left.</p><br>
+			
+			<p style="text-indent:50px;">This page is particularly used to find out the accelerations at the CG of the links. The acceleration values have been represented as a vector situated on the centre of the links which varies dynamically with respect to the variations in the input speed and angle.</p><br>
+			
+			</li>
+			
+			<li><b>Offset Analysis</b></br></br>
+			
+			<center><img src="../images/exp2-7.png" style="width:355px; height:269px;"></img></center></br>
+			
+			<p style="text-indent:50px;">Any body accelerating in space will experience an inertial force. The above simulation aims at simplifying the forces acting on the body of the links by representing the torque acting on the body by displacing the inertial forces parallelely away from the centre of the links through a distance. These offset distances are represented through the table.</p><br>
+						
+			</li>
+			
+			<li><b>Dynamic analysis of Four bar Mechanism</b></br></br>
+			
+			<center><img src="../images/exp2-8.png" style="width:361px; height:268px;"></img></center></br>
+			
+			<p style="text-indent:50px;">This screen is the last screen of the simulation showing the forces acting on the body through vectors. The values of these forces are shown in the table with their respective components. The user can control the mass of each link by navigating through the variables section using the arrows in the control section. </p><br>
+			
+			<center><img src="../images/exp2-9.png" style="width:356px; height:267px;"></img></center></br>
+
+						
+			</li>
+			
+			</ol>
+    </div>
+</div>                      
+
+
+                    
+				</section>
+  <section id="experiment-article-section-3">
+                    <div class="icon" id="experiment-article-section-3-icon">
+                    <!-- Enclose the icon image of your lab. -->
+                    <img src="../images/selfevaluation.jpg" style="padding-left:50px;"></div>
+                    <!-- The heading for the section can be enclosed in a 
+        div tag. -->
+
+                    <div class="heading" id=
+                    "experiment-article-section-3-heading">
+                        Self Evaluation
+                    </div>
+<div class="content" id=
+                    "experiment-article-section-3-content">
+                        <div class="divQuiz">
+                            <div id="displayQuiz">
+                                <form id="form11" method="post" name="form11">
+                                  <p> Check your understanding after you have gone through the basic theory and the procedure to use the simulator.</p>                             
+ <a style="margin-top: 40px;float: left;
+width: auto;
+padding: 5px 15px;
+color: #FFF;
+background-color: #008B8B;
+border: 1px solid #FFF;
+border-radius: 5px;
+text-decoration: none;" href="index2.html">Get Started</a> 
+                                </form>
+                            </div><br>
+                        </div>
+                    </div>
+                </section>
+   <section id="experiment-article-section-4">
+                    <div class="icon" id="experiment-article-section-4-icon">
+                    <!-- Enclose the icon image of your lab.-->
+                     <img src="../images/simulation.jpg" style="padding-left: 25px;"></div>
+                    <div class="heading" id=
+                    "experiment-article-section-4-heading">
+                        Simulation
+                    </div>
+
+<div class="content" id= "experiment-article-section-4-content"><center>
+					<iframe noscroll="" scrolling="no" src="../images/simulation/SliderCrankdynver1.html" height="610px" width="810px"></iframe></center>
+					</div> 
+
+                </section>
+
+                <section id="experiment-article-section-5">
+                    <div class="icon" id="experiment-article-section-5-icon">
+                    <!-- Enclose the icon image of your lab -->
+                    <img src="../images/assignment.jpg" style="padding-left: 20px;"></div>
+                    
+                    
+
+                    <div class="heading" id=
+                    "experiment-article-section-5-heading">
+                        Assignment
+                    </div><!-- Write the section content inside a paragraph 
+          element, You can also include images with &lt;img&gt; tag -->
+
+                    <div class="content" id=
+                    "experiment-article-section-5-content">
+                        <div class="divContent">
+                           <!-- <ol><li>Derive the final equation of Porter governor?</li> -->
+                          <!-- <li>Draw the full schematic working diagram of a centrifugal governor?</li> -->
+                          <!-- <li>A Porter governor has equal arms each 250 mm long and pivoted on the axis of rotation. Each ball has a mass of 5 kg and the mass of the central load on the sleeve is 25 kg. The radius of rotation of the ball is 150 mm when the governor begins to lift and 200 mm when the governor is at maximum speed. Find the minimum and maximum speeds and range of speed of the governor. ans154.5 rpm , range - N2-N1=154.5-133.8=20.7RPM</li></ol><br/> -->
+                            
+                        </div>
+                    </div>
+                </section>
+
+<section id="experiment-article-section-8">
+                    <div class="icon" id="experiment-article-section-8-icon">
+                    <!-- Enclose the icon image of your lab.-->
+                    <img src="../images/quiz.jpg"></div>
+     <div class="heading" id=
+                    "experiment-article-section-8-heading">
+                        Quiz
+                    </div>
+
+                    <div class="content" id=
+                    "experiment-article-section-8-content">
+                        <div class="divQuiz">
+                            <div id="displayQuiz">
+                                <form id="form11" method="post" name="form11">
+                                    <p> Check your ability to answer some of the questions relevant to the simulation that you used.</p> 
+ <a style="margin-top: 40px;float: left;
+width: auto;
+padding: 5px 15px;
+color: #FFF;
+background-color: #008B8B;
+border: 1px solid #FFF;
+border-radius: 5px;
+text-decoration: none;" href="index1.html">Get Started</a>
+
+
+                                   
+                                </form><br>
+                            </div><br>
+                        </div>
+                    </div>
+                </section> 
+
+                <section id="experiment-article-section-7">
+                    <div class="icon" id="experiment-article-section-7-icon">
+                    
+                    <img src="../images/video.jpg" style="padding-left:7px"></div>
+
+                    <div class="heading" id=
+                    "experiment-article-section-7-heading">
+                        Videos
+                    </div>
+
+                    <div class="content" id="experiment-article-section-7-content">
+                        <!-- <div class="divContent"> -->
+                         <!-- NPTEL:<br> -->
+                             <!-- <a href="https://www.youtube.com/watch?v=MJeRFzs4oRU&list=PLBEA57F7E7560C8E8">Kinematics of Machines</a><br> -->
+                        <!-- </div> -->
+                    </div>
+                </section>
+
+           <section id="experiment-article-section-6">
+                    <div class="icon" id="experiment-article-section-6-icon">
+                   
+                    <img src="../images/reference.jpg" style="padding-left: 25px;"></div>
+
+                    <div class="heading" id=
+                    "experiment-article-section-6-heading">
+                        References
+                    </div>
+
+                    <div class="content" id="experiment-article-section-6-content">
+                        <div class="divContent">
+                            <!-- <ul><li> -->
+                            <!-- <p style="font-family:courier new,courier,monospace; font-size:18px;"> Robert L Norton (2011), Design of Machinery (5th Ed.), McGraw Hill Publication </p></li> -->
+                            <!-- <li><p style="font-family:courier new,courier,monospace; font-size:18px;">Uicker J.J., Pennock G.R. and Shigley J.E. (2009), Theory of Machines and Mechanisms (3rd Ed.), Oxford University Press </p></li> -->
+                            <!-- <li><p style="font-family:courier new,courier,monospace; font-size:18px;"> S S Rattan (2014), Theory of Machines (4th Ed.), McGraw Hill Education (India) Private Limited</p></li> -->
+                        <!-- </ul>-->
+						</div> 
+                    </div>
+                </section>
+<!--                 <section id="experiment-article-section-9">
+                    <div class="icon" id="experiment-article-section-9-icon">
+                    <!-- Enclose the icon image of your lab.-->
+    <!--                <img src="../images/nptel_library_icon.png"></div>
+
+                    <div class="heading" id=
+                    "experiment-article-section-9-heading">
+                        NPTEL  
+                    </div>
+
+                    <div class="content" id=
+                    "experiment-article-section-9-content">
+                        <div class="divContent">
+                        </div>
+                    </div>
+                </section> -->
+            
+<section id="lab-article-section-9">
+        
+<div id="lab-article-section-9-icon" class="icon">
+<!-- Enclose the icon image for the section. -->
+<img src="../images/feedback.jpg" style="padding-left: 16px;" />
+</div>
+<!-- The heading for the section can be enclosed in a div tag and shown with a <h2> tag -->
+<div id="lab-article-section-9-heading" class="heading">
+Feedback
+</div>
+<!-- Write the section content inside a paragraph element, You can also include images with <img> tag -->
+<div id="lab-article-section-9-content" class="content">
+
+
+<!-- Custom form start -->
+
+<form method="POST" action="http://rtlabs.nitk.ac.in/feedback.php" role="form">
+<input type="hidden" name="code" value="2">
+ <div class="form-group"> 
+    <label for="name">What is your name?</label> <span class="error">*</span><br>
+    <input type="text" style="width:700px;" name="name" class="form-control" value="" placeholder="You may chose to be Anonymous if you do not wish to disclose your name."required="">
+   <br><br>
+   </div>
+    <div class="form-group"> 
+    <label for="org">Which organization are you associated with?</label><span class="error">*</span><br>
+     <input type="text" style="width:700px;" name="org"  class="form-control" value="" placeholder="Name of your College/Institute/University/Organization."required="">
+   <br><br>
+   </div>
+   <div class="form-group">
+    <label for="discipline">Which is your primary discipline?</label><span class="error">*</span><br>
+   <input type="text" style="width:700px;" name="discipline" class="form-control" value="" placeholder="Example: Mechanical Engineering, Nanotechnology, Biomedical, Mathematics etc."required="">
+   
+   <br><br>
+   </div>
+   <label>Which of the following best describes your current work?</label> <span class="error">*</span><br>
+    <div class="radio"><label><input type="radio" required name="occ" checked="true"  value="Studying">Studying<br></label></div>
+    <div class="radio"><label><input type="radio" required  name="occ"  value="Teaching">Teaching<br></label></div>
+    <div class="radio"><label><input type="radio" required name="occ"   value="Research">Research<br></label></div>
+    <div class="radio"><label><input type="radio" required name="occ"  value="Industry">Industry<br></label></div>
+    <div class="radio"><label><input type="radio" required name="occ"   value="other">Other <input type="text" name="occ-other"></input></label></div>
+
+   <br>
+   <div class="form-group">
+   <label>Experiment Performed </label><span class="error">* </span><br>
+   <select class="form-control" name="exp"  required>
+  <option value="Choose" disabled>Choose</option>
+<option value="Slider Crank Mechanism">Slider Crank Mechanism</option>
+</select>
+
+</div>
+<br>
+<label>Please tell your agreement with the following </label><span class="error">* </span><br>
+<table style="width:100%; margin:0">
+  <tr>
+    <td></td>
+    <td style="text-align:center; width:70px">Excellent</td>    
+    <td style="text-align:center; width:70px">Very Good</td>
+    <td style="text-align:center; width:70px">Good</td>
+    <td style="text-align:center; width:70px">Average</td>
+    <td style="text-align:center; width:70px">Needs Improvement</td>
+  </tr>
+  <tr>
+    <td>To what degree was the actual lab environment simulated</td>
+
+    <td style="text-align:center;">   <div class="radio"><label><input type="radio" checked="true"  required name="rea"  value="5"></label></div></td>    
+    <td style="text-align:center;">   <div class="radio"><label><input type="radio" required  name="rea"  value="4"></label></div></td>
+    <td style="text-align:center;">   <div class="radio"><label><input type="radio"required name="rea"   value="3"></label></div></td>
+   <td style="text-align:center;">   <div class="radio"><label><input type="radio" required name="rea"  value="2"></label></div></td>
+   <td style="text-align:center;">   <div class="radio"><label><input type="radio" required name="rea"  value="1"></label></div></td>
+  </tr>
+  <tr>
+    <td>The theory and procedure were found to be helpful</td>
+    <td style="text-align:center;"> <div class="radio"><label><input type="radio"required checked="true"  name="tnp"  value="5"></label></div></td>    
+    <td style="text-align:center;"> <div class="radio"><label><input type="radio"required  name="tnp"   value="4"></label></div></td>
+    <td style="text-align:center;"> <div class="radio"><label><input type="radio"required  name="tnp"   value="3"></label></div></td>
+   <td style="text-align:center;"> <div class="radio"><label><input type="radio"required name="tnp"  value="2"></label></div></td>
+   <td style="text-align:center;"> <div class="radio"><label><input type="radio"required name="tnp"   value="1"></label></div></td>
+  </tr>
+  <tr>
+    <td>The results of simulation/experiment were easily interpretable</td>
+    <td style="text-align:center;"> <div class="radio"><label><input type="radio" checked="true"  required name="eas"  value="5"></label></div></td>    
+    <td style="text-align:center;"> <div class="radio"><label><input type="radio"required name="eas"   value="4"></label></div></td>
+    <td style="text-align:center;"> <div class="radio"><label><input type="radio"required name="eas"  value="3"></label></div></td>
+   <td style="text-align:center;"> <div class="radio"><label><input type="radio"required name="eas"  value="2"></label></div></td>
+   <td style="text-align:center;"> <div class="radio"><label><input type="radio"required name="eas"   value="1"></label></div></td>
+  </tr>
+</table>
+<br>
+<div class="form-group">
+<label for="help">How helpful do you feel the system is?</label>
+ <br><input type="text" style="width:700px;" class="form-control"name="help" value="">
+   <br><br>
+   </div>
+<label>Please answer the following questions</label><span class="error">* </span><br>
+<table style="width:100%; border:none; margin:0">
+  <tr>
+    <td></td>
+    <td>Yes</td>    
+    <td>No</td>
+  </tr>
+   <tr>
+    <td>Did you get the feel of actual lab while performing the simulation/experiments</td>
+    <td> <div class="radio"><label><input type="radio"required name="a" checked="true"  value="Y"></label></div></td>    
+    <td> <div class="radio"><label><input type="radio"required name="a"  value="N"></label></div></td>
+    </tr>
+  <tr>
+    <td>Did you read the theory and procedure before performing the simulation/experiments</td>
+    <td> <div class="radio"><label><input type="radio"required name="b" checked="true"  value="Y"></label></div></td>    
+    <td> <div class="radio"><label><input type="radio"required name="b"   value="N"></label></div></td>
+    </tr>
+
+  <tr>
+    <td>Could you conduct the simulation/experiment successfully</td>
+    <td> <div class="radio"><label><input type="radio"required name="c" checked="true"  value="Y"></label></div></td>    
+    <td> <div class="radio"><label><input type="radio"required name="c" value="N"></label></div></td>
+    </tr>
+  <tr>
+    <td>Could you compare your results with the given typical results in explore</td>
+    <td> <div class="radio"><label><input type="radio"required name="d" checked="true"  value="Y"></label></div></td>    
+    <td> <div class="radio"><label><input type="radio"required name="d"   value="N"></label></div></td>
+    </tr>
+  <tr>
+    <td>Do you think performing experiments through virtual labs are more challenging than the real experiments</td>
+    <td> <div class="radio"><label><input type="radio"required name="e"  checked="true"  value="Y"></label></div></td>    
+    <td> <div class="radio"><label><input type="radio"required name="e"   value="N"></label></div></td>
+    </tr>
+  <tr>
+    <td>Do you think doing experiments through virtual lab gives scope for more innovative and creative research work</td>
+    <td> <div class="radio"><label><input type="radio"required name="f"  checked="true"  value="Y"></label></div></td>    
+    <td> <div class="radio"><label><input type="radio"required name="f"  value="N"></label></div></td>
+    </tr>
+</table>
+<br><br>
+<div class="form-group">
+<label for="c1">Please mention any problems/difficulties you faced while performing the simulation/experiment. It will help us improve the content for your later visits.</label>
+<br><textarea  name="c1" class="form-control" rows="4" cols="50"></textarea>
+<br><br>
+</div>
+<div class="form-group">
+<label for="c2">What do you find most interesting thing about the simulation/experiment? We would be happy to know what delighted you.</label>
+<br><textarea name="c2" class="form-control" rows="4" cols="50"></textarea>
+<br><br>
+</div>
+<div class="form-group">
+<label for="c2">Is there anything else that you would like to tell us ?</label>
+<br><textarea name="c3"class="form-control"  rows="4" cols="50"></textarea>
+<br><br>
+</div>
+<button type="submit" name="submit"  class="btn btn-default" value="Submit"> Submit </button>
+</form>
+
+
+<!-- Custom form complete -->
+
+</div>
+	
+</section>
+
+            </div>
+        </article>
+    </div>
+</body>
+</html>
